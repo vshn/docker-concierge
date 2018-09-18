@@ -98,7 +98,7 @@ The ModuleSync `msync` command, which is called by the `concierge` script, uses 
 
 ### GitLab CI
 
-1. Add `SSH_PRIVATE_KEY` as "Variables" to you repository project Settings > CI/CD.
+1. Add `SSH_PRIVATE_KEY` and `SSH_KNOWN_HOSTS` as "Variables" to your repository project Settings > CI/CD.
 1. Add the corresponding SSH public key as a "Deploy Key" with "Write access allowed" to Settings > Repository of all Git repositories you want Concierge to manage for you.
 
 See the [GitLab CI docs on SSH keys](https://docs.gitlab.com/ce/ci/ssh_keys/) for background information.
