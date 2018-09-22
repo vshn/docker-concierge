@@ -1,13 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
 echo -n 'Activate SSH agent: '
-source <(ssh-agent -s)
+eval $(ssh-agent -s)
 
 if [ -n "$SSH_PRIVATE_KEY" ]; then
     echo 'Add SSH private key from environment ...'
-    ssh-add <(echo "$SSH_PRIVATE_KEY" | tr -d '\r')
+    echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
 fi
 
 if [ -n "$SSH_KNOWN_HOSTS" ]; then
@@ -15,4 +15,5 @@ if [ -n "$SSH_KNOWN_HOSTS" ]; then
     echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
 fi
 
-$*
+echo "$@"
+exec "$@"
