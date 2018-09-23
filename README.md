@@ -30,7 +30,7 @@ Getting Started
 1. Create a `configs/` folder.
 1. Add a `<repository-config>/` folder inside of it, and populate it with a [
    ModuleSync configuration](https://github.com/puppetlabs/modulesync_configs).
-1. Add more ModuleSync config folders inside `config/` for different repository setups.
+1. Add more ModuleSync config folders inside `configs/` for different repository setups.
 1. Put everything under version control, and push it to your CI service.
 
 From now on, for every change you make to one of your configuration setups, ModuleSync
@@ -45,6 +45,7 @@ Now reliably, without forgetting any repo, and in a matter of seconds rather tha
 ---
 concierge:
   image: vshn/concierge
+  script: concierge
   variables:
     GIT_COMMITTER_NAME: Concierge by VSHN
     GIT_COMMITTER_EMAIL: concierge@vshn.ch
