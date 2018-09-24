@@ -6,7 +6,7 @@ NOCOLOR='\033[0m'
 PURPLE='\033[1;35m'
 BLUE='\033[1;34m'
 
-CONFIGS=/app/configs
+CONFIGS="$(pwd)/configs"
 
 if [ -d ${CONFIGS} ]; then
 
