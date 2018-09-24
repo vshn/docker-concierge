@@ -95,6 +95,7 @@ The ModuleSync `msync` command, which is called by the `concierge` script, uses 
 - `SSH_PRIVATE_KEY` (default: empty) ... the private key used to connect to your Git server and clone repositories
 - `SSH_KNOWN_HOSTS` (default: empty) ... content for the `~/.ssh/known_hosts` file to identify trusted hosts
 - `GIT_USER_NAME`, `GIT_USER_EMAIL` ... override Git user (otherwise derived from last commit)
+- `GIT_COMMIT_MESSAGE` ... override Git commit message (otherwise derived from last commit)
 
 Other environment values can be set as of the official [Git documentation](
 https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables

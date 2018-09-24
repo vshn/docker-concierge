@@ -6,6 +6,7 @@ NOCOLOR='\033[0m'
 PURPLE='\033[1;35m'
 BLUE='\033[1;34m'
 
+export GIT_COMMIT_MESSAGE="${GIT_COMMIT_MESSAGE:-$(git log -1 --format=%B)}"
 export GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME:-$(git show -q --format=%aN HEAD)}"
 export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-$(git show -q --format=%aE HEAD)}"
 export GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME:-$(git show -q --format=%cN HEAD)}"
@@ -28,6 +29,7 @@ if [ -d ${CONFIGS} ]; then
     echo "user: $(git config --global user.name) <$(git config --global user.email)>"
     echo "author: $GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"
     echo "committer: $GIT_COMMITTER_NAME <$GIT_COMMITTER_EMAIL>"
+    echo "message: $GIT_COMMIT_MESSAGE"
 
     for DIR in ${CONFIGS}/*; do
         COMMAND="msync update"
@@ -35,7 +37,7 @@ if [ -d ${CONFIGS} ]; then
         HEADER="=== ${PURPLE}${COMMAND} ${BLUE}${DIRNAME}${NOCOLOR} ==="
 
         echo && echo ${HEADER}
-        cd ${DIR} && ${COMMAND} || exit $?
+        cd ${DIR} && ${COMMAND} -m "${GIT_COMMIT_MESSAGE}" || exit $?
         cd - > /dev/null
     done
 else
