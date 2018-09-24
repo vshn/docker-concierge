@@ -15,5 +15,4 @@ if [ -n "$SSH_KNOWN_HOSTS" ]; then
     echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
 fi
 
-echo "$@"
 exec "$@"
