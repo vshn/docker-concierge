@@ -10,7 +10,7 @@ Concierge
 Config Management + CI
 ----------------------
 
-Concierge is configuration management for your Git repositories driven by the CI service of your choice (GitLab CI, Travis CI, Circle CI - you name it).
+Concierge is configuration management for your Git repositories driven by the CI service of your choice (GitLab CI, Bitbucket Pipelines, Travis CI, Circle CI -- you name it).
 Concierge builds on [ModuleSync](https://github.com/vshn/docker-modulesync/) and loops over a number of [ModuleSync configurations](
 https://github.com/puppetlabs/modulesync_configs) in a `configs/` directory.
 
@@ -103,10 +103,9 @@ https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
 
 ### GitLab CI
 
-1. Add `SSH_PRIVATE_KEY` and `SSH_KNOWN_HOSTS` as "Variables" to your repository project Settings > CI/CD.
-1. Add the corresponding SSH public key as a "Deploy Key" with "Write access allowed" to Settings > Repository of all Git repositories you want Concierge to manage for you.
-
-See the [GitLab CI docs on SSH keys](https://docs.gitlab.com/ce/ci/ssh_keys/) for background information.
+1. Add `SSH_PRIVATE_KEY` and `SSH_KNOWN_HOSTS` to your repository project at Settings > CI/CD > Variables. See the [
+   GitLab CI docs on SSH keys](https://docs.gitlab.com/ce/ci/ssh_keys/) for background information.
+1. Add the corresponding SSH public key to Settings > Repository > Deploy Keys, enabling "Write access allowed", for all Git repositories you want to allow Concierge to manage.
 
 ### Bitbucket Pipelines
 
