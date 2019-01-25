@@ -19,9 +19,15 @@ This Docker image is ready for use with OpenShift and Kubernetes.
 Supported Tags
 --------------
 
-- [`latest`](https://github.com/vshn/docker-concierge/blob/master/Dockerfile) [![Image Layers](
-  https://img.shields.io/imagelayers/layers/vshn/concierge/latest.svg)](https://imagelayers.io/?images=vshn/concierge:latest
-  ) (based on current GitHub `master`)
+- [![latest](
+  https://img.shields.io/badge/latest-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
+  https://github.com/vshn/docker-concierge/blob/master/Dockerfile) [![image layers](
+  https://img.shields.io/microbadger/layers/vshn/concierge/latest.svg)](
+  https://microbadger.com/images/vshn/concierge) [![image size](
+  https://img.shields.io/microbadger/image-size/vshn/concierge/latest.svg)](
+  https://microbadger.com/images/vshn/concierge) [![based on](
+  https://img.shields.io/badge/Git-master-grey.svg?colorA=5a5b5c&colorB=9a9b9c&logo=github)](
+  https://github.com/vshn/docker-concierge)
 
 Getting Started
 ---------------
@@ -112,6 +118,12 @@ https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
 Follow steps 1, 2, 3 from the [Use SSH keys in Bitbucket Pipelines](
 https://confluence.atlassian.com/bitbucket/use-ssh-keys-in-bitbucket-pipelines-847452940.html
 ) article in the Bitbucket documentation.
+
+Security and Safety Considerations
+----------------------------------
+
+Consider activating required code reviews and manual triggers of merge requests.
+Ideally, you enforce this policy in a tool-driven fashion leveraging the API of your code repository.
 
 Development
 -----------

@@ -1,6 +1,6 @@
 FROM vshn/modulesync
 
-LABEL maintainer "VSHN AG <tech@vshn.ch>"
+LABEL maintainer="VSHN AG <tech@vshn.ch>"
 
 USER root
 RUN apt-get install -y openssh-client \
