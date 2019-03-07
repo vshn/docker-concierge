@@ -3,7 +3,9 @@ FROM docker.io/vshn/modulesync:0.10.0
 LABEL maintainer="VSHN AG <tech@vshn.ch>"
 
 USER root
-RUN apt-get install -y openssh-client \
+RUN apt-get update \
+ && apt-get install -y openssh-client \
+ && apt-get clean \
  && ln -sv /opt/concierge.sh /usr/local/bin/concierge
 
 COPY entrypoint.sh concierge.sh /opt/
