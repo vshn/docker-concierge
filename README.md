@@ -21,11 +21,9 @@ Supported Tags
 
 - [![latest](
   https://img.shields.io/badge/latest-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
-  https://github.com/vshn/docker-concierge/blob/master/Dockerfile) [![image layers](
-  https://img.shields.io/microbadger/layers/vshn/concierge/latest.svg)](
-  https://microbadger.com/images/vshn/concierge) [![image size](
-  https://img.shields.io/microbadger/image-size/vshn/concierge/latest.svg)](
-  https://microbadger.com/images/vshn/concierge) [![based on](
+  https://github.com/vshn/docker-concierge/blob/master/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/concierge:latest.svg)](
+  https://microbadger.com/images/vshn/concierge:latest) [![based on](
   https://img.shields.io/badge/Git-master-grey.svg?colorA=5a5b5c&colorB=9a9b9c&logo=github)](
   https://github.com/vshn/docker-concierge)
 
