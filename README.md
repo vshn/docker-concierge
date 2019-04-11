@@ -5,7 +5,7 @@ Concierge
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/issues
 ) [![GitHub PRs](https://img.shields.io/github/issues-pr-raw/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/pulls
-) [![MIT License](https://img.shields.io/github/license/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/blob/master/LICENSE)
+) [![License](https://img.shields.io/github/license/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/blob/master/LICENSE)
 
 Config Management + CI
 ----------------------
