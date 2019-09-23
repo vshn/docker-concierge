@@ -37,7 +37,7 @@ if [ -d ${CONFIGS} ]; then
         HEADER="=== ${PURPLE}${COMMAND} ${BLUE}${DIRNAME}${NOCOLOR} ==="
 
         echo && echo ${HEADER}
-        cd ${DIR} && ${COMMAND} -m "${GIT_COMMIT_MESSAGE}" || exit $?
+        cd ${DIR} && ${COMMAND} -m "${GIT_COMMIT_MESSAGE}" "${MSYNC_ARGS}" || exit $?
         cd - > /dev/null
     done
 else
