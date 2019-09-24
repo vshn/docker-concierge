@@ -32,12 +32,12 @@ if [ -d ${CONFIGS} ]; then
     echo "message: $GIT_COMMIT_MESSAGE"
 
     for DIR in ${CONFIGS}/*; do
-        COMMAND="msync update"
+        COMMAND="msync update ${MSYNC_ARGS}"
         DIRNAME=$(basename ${DIR})
         HEADER="=== ${PURPLE}${COMMAND} ${BLUE}${DIRNAME}${NOCOLOR} ==="
 
         echo && echo ${HEADER}
-        cd ${DIR} && ${COMMAND} -m "${GIT_COMMIT_MESSAGE}" "${MSYNC_ARGS}" || exit $?
+        cd ${DIR} && ${COMMAND} -m "${GIT_COMMIT_MESSAGE}" || exit $?
         cd - > /dev/null
     done
 else
