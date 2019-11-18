@@ -3,7 +3,8 @@ Concierge
 
 [![dockeri.co](http://dockeri.co/image/vshn/concierge)](https://hub.docker.com/r/vshn/concierge/)
 
-[![GitHub issues](https://img.shields.io/github/issues-raw/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/issues
+[![Build Status](https://img.shields.io/docker/cloud/build/vshn/concierge.svg)](https://hub.docker.com/r/vshn/concierge/builds
+) [![GitHub issues](https://img.shields.io/github/issues-raw/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/issues
 ) [![GitHub PRs](https://img.shields.io/github/issues-pr-raw/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/pulls
 ) [![License](https://img.shields.io/github/license/vshn/docker-concierge.svg)](https://github.com/vshn/docker-concierge/blob/master/LICENSE)
 
