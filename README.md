@@ -54,6 +54,7 @@ concierge:
   variables:
     GIT_COMMITTER_NAME: Concierge by VSHN
     GIT_COMMITTER_EMAIL: concierge@vshn.ch
+    MSYNC_ARGS: --pr
   when: manual
 ```
 
@@ -70,6 +71,7 @@ pipelines:
         script:
           - GIT_COMMITTER_NAME="Concierge by VSHN"
             GIT_COMMITTER_EMAIL="concierge@vshn.ch"
+            MSYNC_ARGS="--pr"
           - concierge
 ```
 
@@ -101,7 +103,7 @@ The ModuleSync `msync` command, which is called by the `concierge` script, uses 
 - `SSH_KNOWN_HOSTS` (default: empty) ... content for the `~/.ssh/known_hosts` file to identify trusted hosts
 - `GIT_USER_NAME`, `GIT_USER_EMAIL` ... override Git user (otherwise derived from last commit)
 - `GIT_COMMIT_MESSAGE` ... override Git commit message (otherwise derived from last commit)
-- `MSYNC_ARGS` define additional arguments to pass to `msync` (e.g. `MSYNC_ARGS=--noop`)
+- `MSYNC_ARGS` define additional arguments to pass to `msync` (e.g. `MSYNC_ARGS=--noop`, `MSYNC_ARGS=--pr`)
 
 Other environment values can be set as of the official [Git documentation](
 https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
