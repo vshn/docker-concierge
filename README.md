@@ -104,6 +104,8 @@ The ModuleSync `msync` command, which is called by the `concierge` script, uses 
 - `GIT_USER_NAME`, `GIT_USER_EMAIL` ... override Git user (otherwise derived from last commit)
 - `GIT_COMMIT_MESSAGE` ... override Git commit message (otherwise derived from last commit)
 - `MSYNC_ARGS` define additional arguments to pass to `msync` (e.g. `MSYNC_ARGS=--noop`, `MSYNC_ARGS=--pr`)
+- `GITLAB_TOKEN` or `GITHUB_TOKEN` must be set for automatic MR/PR generation to work (see
+  [ModuleSync docs](https://github.com/voxpupuli/modulesync#submitting-prsmrs-to-github-or-gitlab))
 
 Other environment values can be set as of the official [Git documentation](
 https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
