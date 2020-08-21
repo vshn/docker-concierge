@@ -11,9 +11,15 @@ Concierge
 Config Management + CI
 ----------------------
 
-Concierge is configuration management for your Git repositories driven by the CI service of your choice (GitLab CI, Bitbucket Pipelines, Travis CI, Circle CI -- you name it).
-Concierge builds on [ModuleSync](https://github.com/vshn/docker-modulesync/) and loops over a number of [ModuleSync configurations](
-https://github.com/puppetlabs/modulesync_configs) in a `configs/` directory.
+Concierge is configuration management for your Git repositories driven by the
+CI service of your choice (GitLab CI, Bitbucket Pipelines, Travis CI, Circle CI -- you name it).
+
+Concierge builds on [ModuleSync](https://github.com/vshn/docker-modulesync/)
+and loops over a number of [ModuleSync configurations](
+https://github.com/puppetlabs/modulesync_configs) from a `configs/` directory.
+This allows you to bulk-manage a vast number of Git repositories from a single
+configuration repository. The companion CLI [concierge-cli](
+https://pypi.org/project/concierge-cli/) further extends the automation possibilities.
 
 This Docker image is ready for use with OpenShift and Kubernetes.
 
@@ -54,7 +60,7 @@ concierge:
   variables:
     GIT_COMMITTER_NAME: Concierge by VSHN
     GIT_COMMITTER_EMAIL: concierge@vshn.ch
-    MSYNC_ARGS: --pr
+    MSYNC_ARGS: --pr --pr-labels=managed-update --force
   when: manual
 ```
 
@@ -71,7 +77,7 @@ pipelines:
         script:
           - GIT_COMMITTER_NAME="Concierge by VSHN"
             GIT_COMMITTER_EMAIL="concierge@vshn.ch"
-            MSYNC_ARGS="--pr"
+            MSYNC_ARGS="--pr --pr-labels=managed-update --force"
           - concierge
 ```
 
@@ -97,14 +103,15 @@ Configuration
 
 The Concierge image sports two main commands: `concierge` and `msync`
 
-The ModuleSync `msync` command, which is called by the `concierge` script, uses Git and SSH. You can configure both of them via environment variables.
+The ModuleSync `msync` command, which is called by the `concierge` script,
+uses Git and SSH. You can configure both of them via environment variables.
 
 - `SSH_PRIVATE_KEY` (default: empty) ... the private key used to connect to your Git server and clone repositories
 - `SSH_KNOWN_HOSTS` (default: empty) ... content for the `~/.ssh/known_hosts` file to identify trusted hosts
 - `GIT_USER_NAME`, `GIT_USER_EMAIL` ... override Git user (otherwise derived from last commit)
 - `GIT_COMMIT_MESSAGE` ... override Git commit message (otherwise derived from last commit)
-- `MSYNC_ARGS` define additional arguments to pass to `msync` (e.g. `MSYNC_ARGS=--noop`, `MSYNC_ARGS=--pr`)
-- `GITLAB_TOKEN` or `GITHUB_TOKEN` must be set for automatic MR/PR generation to work (see
+- `MSYNC_ARGS` define additional arguments to pass to `msync` (e.g. `MSYNC_ARGS=--noop`, `MSYNC_ARGS=MSYNC_ARGS: --pr`)
+- `GITLAB_TOKEN` or `GITHUB_TOKEN` API access token must be set for automatic MR/PR generation to work (see
   [ModuleSync docs](https://github.com/voxpupuli/modulesync#submitting-prsmrs-to-github-or-gitlab))
 
 Other environment values can be set as of the official [Git documentation](
@@ -113,9 +120,12 @@ https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
 
 ### GitLab CI
 
-1. Add `SSH_PRIVATE_KEY` and `SSH_KNOWN_HOSTS` to your repository project at Settings > CI/CD > Variables. See the [
-   GitLab CI docs on SSH keys](https://docs.gitlab.com/ce/ci/ssh_keys/) for background information.
-1. Add the corresponding SSH public key to Settings > Repository > Deploy Keys, enabling "Write access allowed", for all Git repositories you want to allow Concierge to manage.
+1. Add `SSH_PRIVATE_KEY` and `SSH_KNOWN_HOSTS` to your repository project at
+   Settings > CI/CD > Variables. See the [GitLab CI docs on SSH keys](
+   https://docs.gitlab.com/ce/ci/ssh_keys/) for background information.
+1. Add the corresponding SSH public key to Settings > Repository > Deploy Keys,
+   enabling "Write access allowed", for all Git repositories you want to allow
+   Concierge to manage.
 
 ### Bitbucket Pipelines
 
@@ -126,8 +136,12 @@ https://confluence.atlassian.com/bitbucket/use-ssh-keys-in-bitbucket-pipelines-8
 Security and Safety Considerations
 ----------------------------------
 
-Consider activating required code reviews and manual triggers of merge requests.
-Ideally, you enforce this policy in a tool-driven fashion leveraging the API of your code repository.
+Consider activating branch protection for your main branch, required code reviews
+(merge requests) and manual triggers of merging into your target branch.
+
+Ideally, you enforce this policy in a tool-driven fashion leveraging the API
+of your code repository. You should also perform code reviews and merging in
+bulk from the command line, with a tool like [concierge-cli](https://pypi.org/project/concierge-cli/).
 
 Development
 -----------

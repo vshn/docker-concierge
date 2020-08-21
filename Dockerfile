@@ -1,4 +1,4 @@
-FROM docker.io/vshn/modulesync:latest
+FROM docker.io/vshn/modulesync:2.0.0
 
 LABEL maintainer="VSHN AG <tech@vshn.ch>"
 
